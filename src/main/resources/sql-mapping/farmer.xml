@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fanqie.framework.scheduler.repo.FarmerRepository">
+
+    <resultMap id="baseResultMap" type="com.fanqie.framework.scheduler.model.Farmer">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+    </resultMap>
+
+    <insert id="add-new-farmer" parameterType="com.fanqie.framework.scheduler.model.Farmer">
+      insert into farmers(id, name, age) values (
+        #{id},
+        #{name},
+        #{age}
+      )
+    </insert>
+
+    <select id="findAll" resultMap="baseResultMap">
+        select id as id,
+        name as name,
+        age as age
+        from farmers
+    </select>
+
+
+</mapper>
